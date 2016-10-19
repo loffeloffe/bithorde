@@ -1,3 +1,5 @@
+#define BOOST_LOG_DYN_LINK 1
+
 #include "main.h"
 
 #include <boost/log/trivial.hpp>

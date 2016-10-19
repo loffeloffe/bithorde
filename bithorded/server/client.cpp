@@ -14,6 +14,8 @@
     limitations under the License.
 */
 
+#define BOOST_LOG_DYN_LINK 1
+
 #include "client.hpp"
 #include "server.hpp"
 
