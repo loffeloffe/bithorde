@@ -1,0 +1,10 @@
+description "Bithorde daemon"
+
+start on startup
+stop on shutdown
+
+env USER=bithorde
+respawn
+
+exec /usr/bin/bithorded -c/etc/bithorde.conf
+respawn limit 5 60

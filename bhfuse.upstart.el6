@@ -1,0 +1,22 @@
+description "BitHorde FUSE proxy"
+
+start on started bithorde
+stop on stopped bithorde
+
+console output
+
+pre-start script
+  if [ -d /tmp/bhfuse ]; then
+    exit 0
+  else
+    install -d -onobody -gnobody -m755 /tmp/bhfuse
+  fi
+end script
+
+exec /usr/bin/bhfuse --timeout=500 /tmp/bhfuse
+respawn
+
+post-stop script
+ (mount | grep -c /tmp/bhfuse) && /bin/umount -lf /tmp/bhfuse
+ sleep 1
+end script
